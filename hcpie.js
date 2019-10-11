@@ -42,8 +42,19 @@ var series = [
 
  // Data structure to hold all the configurations together
  var json = {};
-
+ var plotOptions = {
+    pie: {
+        dataLabels: {
+            formatter: function() {
+                var sliceIndex = this.point.index;
+                var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                return sliceName
+            }
+        }
+    }
+}
  // Tying all the configurations
+json.plotOptions = plotOptions
 json.chart = {type:"pie"}
 json.title = title;
 json.subtitle = subtitle;
